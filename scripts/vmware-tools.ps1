@@ -10,5 +10,5 @@ $parameters = '/S /v "/qn REBOOT=R ADDLOCAL=ALL"'
 Write-Output "***** Installing VMWare Guest Tools"
 Start-Process $exe $parameters -Wait
 
-Write-Output "***** Deleting $isopath"
+Write-Output "***** Deleting $exe"
 Remove-Item $exe
