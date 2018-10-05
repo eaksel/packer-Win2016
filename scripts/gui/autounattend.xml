@@ -190,6 +190,11 @@
                     <Order>14</Order>
                     <Description>Disable password expiration for packer user</Description>
                 </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -Command dism /online /set-edition:ServerDatacenter /productkey:CB7KF-BWN84-R7R2Y-793K2-8XDDG /accepteula</CommandLine>
+                    <Order>15</Order>
+                    <Description>Switch from EVAL to VL</Description>
+                </SynchronousCommand>
             </FirstLogonCommands>
             <OOBE>
                 <HideEULAPage>true</HideEULAPage>
