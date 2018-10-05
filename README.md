@@ -35,14 +35,14 @@ packer build -only=virtualbox-iso win2016-core.json #Windows Server 2016 Core
 
 *If you omit the keyword "-only=" images for both Workstation and Virtualbox will be created.*
 
-By default the .iso of Windows Server 2016 is pulled from <http://care.dlservice.microsoft.com/dl/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO>
+By default the .iso of Windows Server 2016 is pulled from <https://software-download.microsoft.com/download/pr/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.ISO>
 
 You can change the URL to one closer to your build server. To do so change the **"iso_url"** parameter in the **"variables"** section of the debian9.json file.
 
 ```json
 {
   "variables": {
-      "iso_url": "http://care.dlservice.microsoft.com/dl/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO"
+      "iso_url": "https://software-download.microsoft.com/download/pr/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.ISO"
 }
 ```
 
