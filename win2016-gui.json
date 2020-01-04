@@ -9,7 +9,7 @@
       "numvcpus": "2",
       "vm_name": "Win2016_14393",
       "winrm_password" : "packer",
-      "winrm_username" : "packer"
+      "winrm_username" : "Administrator"
     },
     "builders": [
         {
@@ -30,9 +30,7 @@
           "winrm_use_ssl": true,
           "winrm_insecure": true,
           "winrm_timeout": "4h",
-          "floppy_files": [
-            "scripts/gui/autounattend.xml"
-          ],
+          "floppy_files": ["scripts/gui/autounattend.xml"],
           "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
           "shutdown_timeout": "30m",
           "skip_compaction": false,
@@ -61,9 +59,7 @@
             "winrm_use_ssl": true,
             "winrm_insecure": true,
             "winrm_timeout": "4h",
-            "floppy_files": [
-                "scripts/autounattend.xml"
-              ],
+            "floppy_files": ["scripts/autounattend.xml"],
             "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
             "shutdown_timeout": "30m",
             "vboxmanage": [
@@ -73,45 +69,41 @@
         }
     ],
     "provisioners": [
-      {
-        "type": "powershell",
-        "only": ["vmware-iso"],
-        "scripts": [
-          "scripts/vmware-tools.ps1"
-        ],
-        "pause_before": "10m"
-      },
-      {
-        "type": "powershell",
-        "only": ["virtualbox-iso"],
-        "scripts": [
-          "scripts/virtualbox-guest-additions.ps1"
-        ]
-      },
-      {
-        "type": "windows-restart",
-        "restart_timeout": "30m"
-      },
-      {
-        "type": "windows-restart",
-        "restart_timeout": "30m"
-      },
-      {
-        "type": "powershell",
-        "scripts": [
-          "scripts/win-update.ps1"
-        ]
-      },
-      {
-        "type": "windows-restart",
-        "restart_timeout": "30m"
-      },
-      {
-        "type": "powershell",
-        "scripts": [
-          "scripts/cleanup.ps1"
-        ],
-        "pause_before": "10m"
-      }
+        {
+            "type": "powershell",
+            "only": ["vmware-iso"],
+            "scripts": ["scripts/vmware-tools.ps1"]
+        },
+        {
+            "type": "powershell",
+            "only": ["virtualbox-iso"],
+            "scripts": ["scripts/virtualbox-guest-additions.ps1"]
+        },
+        {
+            "type": "windows-restart",
+            "restart_timeout": "30m"
+        },
+        {
+            "type": "powershell",
+            "scripts": ["scripts/win-update.ps1"]
+        },
+        {
+            "type": "windows-restart",
+            "restart_timeout": "30m"
+        },
+        {
+            "type": "powershell",
+            "scripts": ["scripts/win-update.ps1"],
+            "pause_before": "2m"
+        },
+        {
+            "type": "windows-restart",
+            "restart_timeout": "30m"
+        },
+        {
+            "type": "powershell",
+            "scripts": ["scripts/cleanup.ps1"],
+            "pause_before": "2m"
+        }
     ]
 }
